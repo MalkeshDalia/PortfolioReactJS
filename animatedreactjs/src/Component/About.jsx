@@ -1,9 +1,16 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import Common from "./Common";
 
 const About = () => {
   return (
     <>
-      <h1>Welcome to About Page</h1>
+      <Common
+        name="Welcome to About Page"
+        imgsrc="https://www.innotech-sa.com/img/educational_informatics_ob.png"
+        visit="/contact"
+        btname="Contact Now"
+      />
     </>
   );
 };
