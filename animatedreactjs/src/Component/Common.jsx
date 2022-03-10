@@ -10,7 +10,7 @@ const Common = (props) => {
         <div className="container">
           <div className="row">
             <div className="col-12 mx-auto">
-              <div className="row d-flex justify-content-end">
+              <div className="row">
                 <div className="col-md-6 pt-lg-1 ps-sm-5 ms-6 d-flex justify-content-center flex-column ">
                   <h1>
                     {props.name}
