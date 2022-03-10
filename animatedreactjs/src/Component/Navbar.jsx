@@ -27,7 +27,7 @@ const Navbar = () => {
                 </button>
 
                 <div
-                  className="collapse navbar-collapse"
+                  className="collapse navbar-collapse d-flex justify-content-end"
                   id="navbarSupportedContent"
                 >
                   <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
