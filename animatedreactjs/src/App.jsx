@@ -6,6 +6,7 @@ import About from "./Component/About";
 import Contact from "./Component/Contact";
 import Service from "./Component/Service";
 import Navbar from "./Component/Navbar";
+import Footer from "./Component/Footer";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path="/service" component={Service} />
         <Redirect to="/" />
       </Switch>
+      <Footer />
     </>
   );
 };
