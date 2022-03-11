@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <Common
         name="Grow your business with"
-        imgsrc="https://cielo24.com/wp-content/uploads/2016/03/innovative-technology.jpeg"
+        imgsrc="https://cdn.dribbble.com/users/1912990/screenshots/6129020/media/5de7b1748ffb5977fc77840b16f939c5.gif"
         visit="/service"
         btname="Get Started"
       />

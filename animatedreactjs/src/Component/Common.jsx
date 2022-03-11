@@ -6,43 +6,35 @@ import { NavLink } from "react-router-dom";
 const Common = (props) => {
   return (
     <>
-      <section id="header" className="d-flex align-items-center">
-        <div className="container">
-          <div className="row">
-            <div className="col-12 mx-auto">
-              <div className="row">
-                <div className="col-md-6 pt-lg-1 ps-sm-5 ms-6 d-flex justify-content-center flex-column ">
-                  <h1>
+    <section id="header" className="d-flex align-items-center">
+      <div className="container">
+      <div class="row no-gutters mt-md-5">
+  <div class="col-12 col-sm-6 col-md-6 mt-md-5" ><h1>
                     {props.name}
                     <strong className="brand-name">
                       {" "}
                       Innovative Technologies
                     </strong>
                   </h1>
-
                   <h2 className="my-3">
                     We are the team of talented developer making websites
                   </h2>
-
                   <div className="mt-3">
                     <NavLink to={props.visit} className="btn-get-started">
                       <button type="button" className="btn btn-outline-primary">{props.btname}</button>
                     </NavLink>
-                  </div>
-
-                  <div className="col-lg-10 order-1 order-lg-2 header-img pt-1">
-                    <img
+                  </div></div>
+  <div class="col-6 col-md-6">
+  <img
                       src={props.imgsrc}
-                      className="img-fluid animated"
+                      className="img-fluid animated ml-lg-0"
                       alt="Image Error"
                     />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
+</div>
+</div>
+      </div>
+    </section>
     </>
   );
 };
