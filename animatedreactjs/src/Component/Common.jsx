@@ -26,11 +26,11 @@ const Common = (props) => {
 
                   <div className="mt-3">
                     <NavLink to={props.visit} className="btn-get-started">
-                      {props.btname}
+                      <button type="button" className="btn btn-outline-primary">{props.btname}</button>
                     </NavLink>
                   </div>
 
-                  <div className="col-lg-10 order-1 order-lg-2 header-img">
+                  <div className="col-lg-10 order-1 order-lg-2 header-img pt-1">
                     <img
                       src={props.imgsrc}
                       className="img-fluid animated"
