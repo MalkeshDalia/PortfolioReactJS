@@ -11,7 +11,12 @@ import Footer from "./Component/Footer";
 const App = () => {
   return (
     <>
+    <div class="card">
+    <div class="card-header">
       <Navbar />
+   
+  </div>
+  <div class="card-body">
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
@@ -19,7 +24,11 @@ const App = () => {
         <Route exact path="/service" component={Service} />
         <Redirect to="/" />
       </Switch>
+      </div>
+      <div class="card-footer text-muted">
       <Footer />
+    </div>
+      </div>
     </>
   );
 };
