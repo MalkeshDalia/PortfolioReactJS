@@ -8,10 +8,13 @@ const Navbar = () => {
       <div className="container-fluid nav_bg">
         <div className="row">
           <div className="col-10 mx-auto">
-            <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{backgroundColor: '#e3f2fd'}}>
+            <nav
+              className="navbar navbar-expand-lg navbar-light bg-light"
+              style={{ backgroundColor: "#e3f2fd" }}
+            >
               <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">
-                  Navbar
+                <NavLink className="navbar-brand" exact to="/">
+                  React User
                 </NavLink>
 
                 <button
@@ -47,6 +50,7 @@ const Navbar = () => {
                       <NavLink
                         activeClassName="menu_active"
                         className="nav-link"
+                        exact
                         to="/service"
                       >
                         Services
@@ -57,6 +61,7 @@ const Navbar = () => {
                       <NavLink
                         activeClassName="menu_active"
                         className="nav-link"
+                        exact
                         to="/about"
                       >
                         About
@@ -67,9 +72,20 @@ const Navbar = () => {
                       <NavLink
                         activeClassName="menu_active"
                         className="nav-link"
+                        exact
                         to="/contact"
                       >
                         Contact
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink
+                        activeClassName="menu_active"
+                        className="nav-link"
+                        exact
+                        to="/registerusers"
+                      >
+                        Register Users
                       </NavLink>
                     </li>
                   </ul>

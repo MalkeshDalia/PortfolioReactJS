@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Contact = () => {
+  const history = useHistory();
   const [data, setData] = useState({
-    fullname: "",
-    phone: "",
+    name: "",
     email: "",
-    message: "",
+    phone: "",
+    address: "",
   });
 
   const inputEvent = (e) => {
@@ -19,17 +22,20 @@ const Contact = () => {
     });
   };
 
-  const formSubmit = (e) => {
+  const formSubmit = async (e) => {
     e.preventDefault();
-    alert(
-      `My name is ${data.fullname}, My phone number is ${data.phone}, My email address is ${data.email}, the message is ${data.message}`
-    );
+    const userData = data;
+    await axios.post("http://localhost:8080/register", userData).then((res) => {
+      history.push("/registerusers").catch((err) => {
+        alert(err.message);
+      });
+    });
   };
 
   return (
     <>
       <div className="my-5">
-        <h1 className="text-center"> Contact US </h1>
+        <h1 className="text-center"> Register User </h1>
       </div>
 
       <div className="container contact_div">
@@ -44,8 +50,8 @@ const Contact = () => {
                   type="text"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  name="fullname"
-                  value={data.fullname}
+                  name="name"
+                  value={data.name}
                   onChange={inputEvent}
                   placeholder="Enter Your Name"
                   required
@@ -54,22 +60,7 @@ const Contact = () => {
 
               <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">
-                  Phone
-                </label>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  name="phone"
-                  value={data.phone}
-                  onChange={inputEvent}
-                  placeholder="Enter Your Phone Number"
-                />
-              </div>
-
-              <div className="mb-3">
-                <label for="exampleFormControlInput1" className="form-label">
-                  Email Address
+                  Email
                 </label>
                 <input
                   type="email"
@@ -78,26 +69,41 @@ const Contact = () => {
                   name="email"
                   value={data.email}
                   onChange={inputEvent}
+                  placeholder="Enter Your Phone Number"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label for="exampleFormControlInput1" className="form-label">
+                  Phone Number
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  name="phone"
+                  value={data.phone}
+                  onChange={inputEvent}
                   placeholder="Enter Your Email"
                 />
               </div>
 
               <div className="mb-3">
                 <label for="exampleFormControlTextarea1" className="form-label">
-                  Message
+                  Address
                 </label>
                 <textarea
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name="message"
-                  value={data.message}
+                  name="address"
+                  value={data.address}
                   onChange={inputEvent}
                 ></textarea>
               </div>
               <div class="col-12">
                 <button class="btn btn-outline-primary" type="submit">
-                  Submit form
+                  Add User
                 </button>
               </div>
             </form>
