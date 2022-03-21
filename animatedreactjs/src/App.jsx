@@ -8,25 +8,29 @@ import Service from "./Component/Service";
 import Navbar from "./Component/Navbar";
 import Footer from "./Component/Footer";
 import RegisterUsers from "./Component/RegisterUsers";
+import EditUser from "./Component/EditUser";
+import User from "./Component/User";
 
 const App = () => {
   return (
     <>
-      <div class="card">
-        <div class="card-header">
+      <div className="card">
+        <div className="card-header">
           <Navbar />
         </div>
-        <div class="card-body">
+        <div className="card-body">
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/service" component={Service} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact} />
-            <Route exact path="/service" component={Service} />
             <Route exact path="/registerusers" component={RegisterUsers} />
+            <Route exact path="/edit/user/:id" component={EditUser} />
+            <Route exact path="/user/:id" component={User} />
             <Redirect to="/" />
           </Switch>
         </div>
-        <div class="card-footer text-muted">
+        <div className="card-footer text-muted">
           <Footer />
         </div>
       </div>

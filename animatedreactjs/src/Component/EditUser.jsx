@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
-const Contact = () => {
+const EditUser = () => {
   const history = useHistory();
+
+  const { id } = useParams();
+
   const [data, setData] = useState({
     name: "",
     email: "",
     phone: "",
     address: "",
   });
+
+  useEffect(() => {
+    loadUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const inputEvent = (e) => {
     const { value, name } = e.target;
@@ -22,20 +30,29 @@ const Contact = () => {
     });
   };
 
+  // Getting Data from Db to modify
+  const loadUser = async () => {
+    const result = await axios.get(`http://localhost:8080/register/${id}`);
+    setData(result.data);
+  };
+
+  // Posting Data after changed
   const formSubmit = async (e) => {
     e.preventDefault();
     const userData = data;
-    await axios.post("http://localhost:8080/register", userData).then((res) => {
-      history.push("/registerusers").catch((err) => {
-        alert(err.message);
+    await axios
+      .put(`http://localhost:8080/register/${id}`, userData)
+      .then((res) => {
+        history.push("/registerusers").catch((err) => {
+          alert(err.message);
+        });
       });
-    });
   };
 
   return (
     <>
       <div className="my-5">
-        <h1 className="text-center"> Register User </h1>
+        <h1 className="text-center"> Edit User </h1>
       </div>
 
       <div className="container contact_div">
@@ -103,8 +120,8 @@ const Contact = () => {
               </div>
 
               <div className="col-12">
-                <button className="btn btn-outline-primary" type="submit">
-                  Add User
+                <button className="btn btn-warning" type="submit">
+                  Edit User
                 </button>
               </div>
             </form>
@@ -115,4 +132,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default EditUser;

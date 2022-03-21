@@ -11,35 +11,35 @@ const RegisterUsers = () => {
 
   const loaduser = async () => {
     const res = await axios.get("http://localhost:8080/register");
-    setData(res.data);
+    setData(res.data.reverse());
   };
 
-  const click = (e, val) => {
-    console.log(val);
-    alert(`hey ${JSON.stringify(val)}`);
+  const deleteUser = async (id) => {
+    await axios.delete(`http://localhost:8080/register/${id}`);
+    loaduser();
   };
 
   return (
     <>
-      <table class="table table-striped">
+      <table className="table table-striped">
         <thead>
           <tr>
-            <th scope="col" class="table-primary">
+            <th scope="col" className="table-primary">
               Id
             </th>
-            <th scope="col" class="table-success">
+            <th scope="col" className="table-success">
               Name
             </th>
-            <th scope="col" class="table-danger">
+            <th scope="col" className="table-danger">
               Phone
             </th>
-            <th scope="col" class="table-warning">
+            <th scope="col" className="table-warning">
               Email
             </th>
-            <th scope="col" class="table-info">
+            <th scope="col" className="table-info">
               Address
             </th>
-            <th scope="col" class="table-dark">
+            <th scope="col" className="table-dark">
               Action
             </th>
           </tr>
@@ -55,9 +55,26 @@ const RegisterUsers = () => {
                   <td>{val.email}</td>
                   <td>{val.address}</td>
                   <td>
-                    <Link className="btn btn-primary mr-2">View</Link>
-                    <Link className="btn btn-outline-primary mr-2">Edit</Link>
-                    <Link className="btn btn-outline-danger">Delete</Link>
+                    <Link
+                      className="btn btn-primary mr-2"
+                      to={`/user/${val._id}`}
+                    >
+                      View
+                    </Link>
+                    <Link
+                      className="btn btn-outline-primary mr-2"
+                      to={`/edit/user/${val._id}`}
+                    >
+                      Edit
+                    </Link>
+                    <Link
+                      className="btn btn-outline-danger"
+                      onClick={() => {
+                        deleteUser(val._id);
+                      }}
+                    >
+                      Delete
+                    </Link>
                   </td>
                 </tr>
               </>
